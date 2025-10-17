@@ -1,5 +1,7 @@
 import Card from "../moleculas/Card";
-import React from 'react';
+import React from "react";
+import PropTypes from 'prop-types';
+
 export default function ListaCard({ descripciones }) {
   return (
     <div className="row">
@@ -11,3 +13,11 @@ export default function ListaCard({ descripciones }) {
     </div>
   );
 }
+
+ListaCard.propTypes = {
+  descripciones: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+};

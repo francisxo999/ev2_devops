@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
 export default function Boton({ to, label }) {
@@ -8,3 +9,8 @@ export default function Boton({ to, label }) {
     </Link>
   );
 }
+
+Boton.propTypes = {
+  to: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+};

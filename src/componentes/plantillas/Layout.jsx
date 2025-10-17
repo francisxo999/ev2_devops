@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export default function Layout({ children }) {
   return (
     <div className="container p-4">
@@ -9,3 +11,7 @@ export default function Layout({ children }) {
     </div>
   );
 }
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired, 
+};

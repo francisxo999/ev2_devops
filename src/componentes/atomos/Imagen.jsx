@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import PropTypes from 'prop-types';
 
 export default function Imagen({ src, alt }) {
   return (
@@ -10,3 +11,8 @@ export default function Imagen({ src, alt }) {
     />
   );
 }
+
+Imagen.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+};
