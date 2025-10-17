@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -26,16 +28,35 @@ jobs:
       - name: Ejecutar linter
         run: npm run lint || true
 
+      - name: Analizar dependencias con Snyk
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }} 
+        with:
+          command: test
+          args: --all-projects --fail-on=high
+
+      - name: Análisis de código con SonarCloud
+        uses: SonarSource/sonarcloud-github-action@v2.4.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
+        with:
+          args: >
+            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+            -Dsonar.organization=francisxo999 # Usamos el ID inferido de tu URL
+            -Dsonar.sources=.
+
       - name: Construir proyecto
         run: npm run build
 
-      - name: Iniciar sesión en Docker Hub
+      - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Construir y subir imagen Docker
+      - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
