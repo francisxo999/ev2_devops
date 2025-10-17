@@ -2,10 +2,10 @@
 
 Este documento establece el flujo de trabajo y los estándares de código para la contribución al proyecto.
 
-## 🌳 1. Flujo de Trabajo (Branching Strategy)
+## 🌳 1. Flujo de Trabajo
 
-* **Estrategia:** Se utilizan las ramas **`main`** (producción) y **`develop`** (integración).
-* **Tareas:** Las nuevas funcionalidades o correcciones deben implementarse en ramas de tarea creadas a partir de `develop`.
+* **Estrategia:** Todo el trabajo se basa en la rama **`main`**.
+* **Tareas:** Las nuevas funcionalidades o correcciones se desarrollan en ramas temporales, creadas a partir de `main`, antes de ser fusionadas de nuevo a `main` mediante un Pull Request.
 
 ### Nomenclatura de Ramas:
 
@@ -13,7 +13,7 @@ Utiliza prefijos claros: `feat/`, `fix/`, `chore/`.
 
 ## 📝 2. Mensajes de Commit (Conventional Commits)
 
-Utiliza la convención de commits para mantener un historial limpio (ej. `feat(api):`, `fix(ci):`, `docs:`).
+Es obligatorio seguir la convención de commits para mantener el historial limpio y legible (ej. `feat(api):`, `fix(ci):`, `docs:`).
 
 ## 💎 3. Estándares de Código
 

@@ -6,7 +6,7 @@ Este repositorio contiene la aplicación Node.js/React y la configuración de in
 
 ## 🚀 1. Flujo de Integración Continua (CI/CD)
 
-El workflow se define en **`.github/workflows/ci.yml`** y se ejecuta automáticamente en cada `push` o `pull request` a las ramas `main` y `develop`.
+El workflow se define en **`.github/workflows/ci.yml`** y se ejecuta automáticamente en cada `push` o `pull request` a la rama `main`.
 
 El pipeline automatiza las siguientes tareas:
 1.  **Instalación y Calidad:** Instala dependencias, ejecuta **Tests**, y revisa el código con **ESLint**.
@@ -21,7 +21,7 @@ El pipeline automatiza las siguientes tareas:
 
 ## 🐳 2. Despliegue Local con Docker Compose
 
-El archivo **`docker-compose.yml`** levanta los tres contenedores requeridos (`app`, `db`, `phpmyadmin`) sin usar volúmenes.
+El archivo **`docker-compose.yml`** levanta los tres contenedores requeridos (`app`, `db`, `phpmyadmin`). No se utilizan volúmenes.
 
 ### Comandos de Ejecución
 
@@ -31,14 +31,7 @@ El archivo **`docker-compose.yml`** levanta los tres contenedores requeridos (`a
     ```bash
     docker-compose up -d
     ```
-
-### Validación de la Entrega
-
-[cite_start]Tu entrega es correcta si al ejecutar el comando: `docker ps -a`, todos los contenedores aparecen con el estado: **`STATUS: Up`** [cite: 20-24].
-
-### Acceso a los Servicios
-
-| Servicio | URL de Acceso |
-| :--- | :--- |
-| **Aplicación (app)** | `http://localhost:3000` |
-| **Administración DB (phpmyadmin)** | `http://localhost:8080` |
+3.  Verifica el estado de los contenedores:
+    ```bash
+    docker ps -a
+    ```
