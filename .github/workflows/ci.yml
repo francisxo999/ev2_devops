@@ -34,7 +34,7 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }} 
         with:
           command: test
-          args: --all-projects --fail-on=high
+          args: --all-projects --fail-on=all
 
       - name: Análisis de código con SonarCloud
         uses: SonarSource/sonarcloud-github-action@v2
