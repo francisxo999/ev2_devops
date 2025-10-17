@@ -37,14 +37,14 @@ jobs:
           args: --all-projects --fail-on=high
 
       - name: Análisis de código con SonarCloud
-        uses: SonarSource/sonarcloud-github-action@v2.4.0
+        uses: SonarSource/sonarcloud-github-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
         with:
           args: >
             -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
-            -Dsonar.organization=francisxo999 # Usamos el ID inferido de tu URL
+            -Dsonar.organization=francisxo999
             -Dsonar.sources=.
 
       - name: Construir proyecto
